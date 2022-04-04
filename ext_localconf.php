@@ -1,5 +1,5 @@
 <?php
-defined('TYPO3_MODE') or die();
+defined('TYPO3') or die();
 
 \TYPO3\CMS\Extbase\Utility\ExtensionUtility::configurePlugin(
     'BeechIt.FalSecuredownload',
@@ -29,7 +29,7 @@ if (TYPO3_MODE === 'BE') {
     if (!(TYPO3_REQUESTTYPE & TYPO3_REQUESTTYPE_CLI)) {
         $signalSlotDispatcher->connect(
             \TYPO3\CMS\Core\Resource\ResourceStorage::class,
-            \TYPO3\CMS\Core\Resource\ResourceStorage::SIGNAL_PreGeneratePublicUrl,
+            'preGeneratePublicUrl',
             \BeechIt\FalSecuredownload\Aspects\PublicUrlAspect::class,
             'generatePublicUrl'
         );
@@ -55,37 +55,37 @@ if (TYPO3_MODE === 'BE') {
 
     $signalSlotDispatcher->connect(
         \TYPO3\CMS\Core\Resource\ResourceStorage::class,
-        \TYPO3\CMS\Core\Resource\ResourceStorageInterface::SIGNAL_PreFolderMove,
+        'preFolderMove',
         \BeechIt\FalSecuredownload\Hooks\FolderChangedSlot::class,
         'preFolderMove'
     );
     $signalSlotDispatcher->connect(
         \TYPO3\CMS\Core\Resource\ResourceStorage::class,
-        \TYPO3\CMS\Core\Resource\ResourceStorageInterface::SIGNAL_PostFolderMove,
+        'postFolderMove',
         \BeechIt\FalSecuredownload\Hooks\FolderChangedSlot::class,
         'postFolderMove'
     );
     $signalSlotDispatcher->connect(
         \TYPO3\CMS\Core\Resource\ResourceStorage::class,
-        \TYPO3\CMS\Core\Resource\ResourceStorageInterface::SIGNAL_PreFolderDelete,
+        'preFolderDelete',
         \BeechIt\FalSecuredownload\Hooks\FolderChangedSlot::class,
         'preFolderDelete'
     );
     $signalSlotDispatcher->connect(
         \TYPO3\CMS\Core\Resource\ResourceStorage::class,
-        \TYPO3\CMS\Core\Resource\ResourceStorageInterface::SIGNAL_PostFolderDelete,
+        'postFolderDelete',
         \BeechIt\FalSecuredownload\Hooks\FolderChangedSlot::class,
         'postFolderDelete'
     );
     $signalSlotDispatcher->connect(
         \TYPO3\CMS\Core\Resource\ResourceStorage::class,
-        \TYPO3\CMS\Core\Resource\ResourceStorageInterface::SIGNAL_PreFolderRename,
+        'preFolderRename',
         \BeechIt\FalSecuredownload\Hooks\FolderChangedSlot::class,
         'preFolderRename'
     );
     $signalSlotDispatcher->connect(
         \TYPO3\CMS\Core\Resource\ResourceStorage::class,
-        \TYPO3\CMS\Core\Resource\ResourceStorageInterface::SIGNAL_PostFolderRename,
+        'postFolderRename',
         \BeechIt\FalSecuredownload\Hooks\FolderChangedSlot::class,
         'postFolderRename'
     );
