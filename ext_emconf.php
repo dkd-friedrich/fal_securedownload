@@ -17,15 +17,15 @@ $EM_CONF[$_EXTKEY] = [
     'createDirs' => '',
     'modify_tables' => '',
     'clearCacheOnLoad' => true,
-    'version' => '3.0.0',
+    'version' => '4.0.0',
     'constraints' => [
         'depends' => [
-            'typo3' => '10.4.6 - 10.4.99',
+            'typo3' => '11.5.8 - 11.5.99',
         ],
         'conflicts' => [],
         'suggests' => [
             'ke_search' => '1.8.4',
-            'solrfal' => '4.1.0',
+            'solrfal' => '11.0.0',
         ],
     ],
 ];
